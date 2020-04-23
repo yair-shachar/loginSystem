@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+<% if (messages.error) { %>
+    <%= messages.error %>
+<% } %>
+<div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+  </div>
+<div>
+    
+<form action="/login" id="form" method="POST">
+    <div class="form-group" class="boarder" id="boarder"> 
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter your Name" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="enter your password" required>
+        <input type="checkbox" onclick="myFunction()" id="showPassword">Show Password  <br<br>
+    </div>
+    
+    <div class="container">
+    
+    <button type="submit" class="btn btn-success">Login</button>
+</form>
+<a class="btn btn-primary" id="text" href="/register">Register</a>
+</div> <!-- This exra closind div dosn't have an opening, but it helps Login and Register to stay on the same row!-->
+</div>
+<script>
+    // Show my password //
+function myFunction() {
+    var x = document.getElementById("password");
+        if (x.type === "password") {
+        x.type = "text";
+        } else {
+        x.type = "password";
+    }
+}
+</script>
+</body>
+</html>
